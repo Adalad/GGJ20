@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class VRLocomotionManager : MonoBehaviour
 {
     public enum LocomotionMode
@@ -15,7 +15,7 @@ public class VRLocomotionManager : MonoBehaviour
     public float MoveSpeed = 1f;
     public float RotateSpeed = 1f;
     public LocomotionMode Mode;
-    private CharacterController CharacterController;
+    private CapsuleCollider Collider;
     private Vector3 MoveDirection;
     private bool IsBlurred = false;
     private Coroutine BlurCoroutine;
@@ -26,7 +26,7 @@ public class VRLocomotionManager : MonoBehaviour
 
     private void Start()
     {
-        CharacterController = GetComponent<CharacterController>();
+        Collider = GetComponent<CapsuleCollider>();
         switch (Mode)
         {
             case LocomotionMode.PAD:
@@ -77,12 +77,9 @@ public class VRLocomotionManager : MonoBehaviour
         {
             LocomotionComponent.GetMovement(ref MoveHorizontal, ref MoveVertical, ref Rotation);
             MoveDirection = (Head.forward * MoveVertical + Head.right * MoveHorizontal) * MoveSpeed * Time.deltaTime;
-            if (!CharacterController.isGrounded)
-            {
-                MoveDirection.y = Physics.gravity.y * Time.deltaTime;
-            }
+            MoveDirection.y = 0;
 
-            CharacterController.Move(MoveDirection);
+            transform.Translate(MoveDirection);
             transform.RotateAround(Head.transform.position, Vector3.up, Rotation * RotateSpeed * Time.deltaTime);
         }
         else
@@ -119,16 +116,16 @@ public class VRLocomotionManager : MonoBehaviour
     {
         // Get head in local space
         float headHeight = Mathf.Clamp(Head.localPosition.y, 1, 2);
-        CharacterController.height = headHeight;
+        Collider.height = headHeight;
         // Cut in half
         Vector3 newCenter = Vector3.zero;
-        newCenter.y = CharacterController.height / 2;
+        newCenter.y = Collider.height / 2;
         // Move capsule in local space
         newCenter.x = Head.localPosition.x;
         newCenter.z = Head.localPosition.z;
         // Rotate
         //newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
         // Apply
-        CharacterController.center = newCenter;
+        Collider.center = newCenter;
     }
 }
