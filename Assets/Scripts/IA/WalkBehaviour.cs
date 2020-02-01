@@ -26,16 +26,13 @@ public class WalkBehaviour : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float distance = Vector3.Distance(animator.transform.position, Player.position);
-        if (distance < 5f)
+        if (Friendly && (distance < 10f))
         {
-            if (Friendly)
-            {
-                animator.SetBool("Wait", true);
-            }
-            else
-            {
-                animator.SetBool("Flee", true);
-            }
+            animator.SetBool("Wait", true);
+        }
+        else if (!Friendly && (distance < 5f))
+        {
+            animator.SetBool("Flee", true);
         }
     }
 

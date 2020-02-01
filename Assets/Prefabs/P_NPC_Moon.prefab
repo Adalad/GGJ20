@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.718
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
@@ -79,27 +79,27 @@ PrefabInstance:
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99734163
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.072868094
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
@@ -114,7 +114,7 @@ PrefabInstance:
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -188.357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005094003447166149, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
@@ -394,7 +394,12 @@ PrefabInstance:
     - target: {fileID: 7030217110172595635, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
       propertyPath: SanityRate
-      value: 10
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030217110172595635, guid: 43725c454f55f624392678ce12b38584,
+        type: 3}
+      propertyPath: Moon
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7054827475699672183, guid: 43725c454f55f624392678ce12b38584,
         type: 3}
@@ -515,6 +520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_ShieldMoon
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 60f6b06f25e73c949aedb3fe5b955cde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2230982756368393763, guid: 60f6b06f25e73c949aedb3fe5b955cde,
         type: 3}
