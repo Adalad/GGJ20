@@ -16,6 +16,7 @@ public class VRLocomotionManager : MonoBehaviour
     public float RotateSpeed = 1f;
     public LocomotionMode Mode;
     private CapsuleCollider Collider;
+    private CharacterController Character;
     private Vector3 MoveDirection;
     private bool IsBlurred = false;
     private Coroutine BlurCoroutine;
@@ -27,6 +28,7 @@ public class VRLocomotionManager : MonoBehaviour
     private void Start()
     {
         Collider = GetComponent<CapsuleCollider>();
+        Character = GetComponent<CharacterController>();
         switch (Mode)
         {
             case LocomotionMode.PAD:
@@ -79,7 +81,7 @@ public class VRLocomotionManager : MonoBehaviour
             MoveDirection = (Head.forward * MoveVertical + Head.right * MoveHorizontal) * MoveSpeed * Time.deltaTime;
             MoveDirection.y = 0;
 
-            transform.Translate(MoveDirection);
+            Character.Move(MoveDirection);
             transform.RotateAround(Head.transform.position, Vector3.up, Rotation * RotateSpeed * Time.deltaTime);
         }
         else
@@ -117,6 +119,7 @@ public class VRLocomotionManager : MonoBehaviour
         // Get head in local space
         float headHeight = Mathf.Clamp(Head.localPosition.y, 1, 2);
         Collider.height = headHeight;
+        Character.height = headHeight;
         // Cut in half
         Vector3 newCenter = Vector3.zero;
         newCenter.y = Collider.height / 2;
@@ -127,5 +130,6 @@ public class VRLocomotionManager : MonoBehaviour
         //newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
         // Apply
         Collider.center = newCenter;
+        Character.center = newCenter;
     }
 }

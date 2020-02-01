@@ -6,23 +6,25 @@ public class PlayerController : MonoBehaviour
     public Renderer LeftHand;
     public Renderer RightHand;
     public Renderer Heart;
-
+    public float SanityDownRate = 1;
     public float Sanity = 100f;
 
-    // Update is called once per frame
     private void Update()
     {
-        HeartBeat.pitch = 1f;
+        Sanity = Mathf.Clamp(Sanity - SanityDownRate * Time.deltaTime, 0f, 100f);
+        HeartBeat.pitch = Map(100 - Sanity, 0f, 100f, 1f, 2f);
         LeftHand.material.SetFloat("_Scale", Map(100 - Sanity, 0f, 100f, 0f, .05f));
-        LeftHand.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .05f));
+        LeftHand.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .002f));
         LeftHand.material.SetFloat("_Glow", Map(100 - Sanity, 0f, 100f, 0f, .05f));
-        LeftHand.material.SetFloat("_TimeScale", Map(100 - Sanity, 0f, 100f, 1f, 10f));
+        LeftHand.material.SetFloat("_TimeScale", Map(100 - Sanity, 0f, 100f, 1f, 11.25f));
         RightHand.material.SetFloat("_Scale", Map(100 - Sanity, 0f, 100f, 0f, .05f));
-        RightHand.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .05f));
+        RightHand.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .002f));
         RightHand.material.SetFloat("_Glow", Map(100 - Sanity, 0f, 100f, 0f, .05f));
+        RightHand.material.SetFloat("_TimeScale", Map(100 - Sanity, 0f, 100f, 1f, 11.25f));
         Heart.material.SetFloat("_Scale", Map(100 - Sanity, 0f, 100f, 0f, .05f));
-        Heart.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .05f));
+        Heart.material.SetFloat("_Effect", Map(100 - Sanity, 0f, 100f, 0f, .01f));
         Heart.material.SetFloat("_Glow", Map(100 - Sanity, 0f, 100f, 0f, .05f));
+        Heart.material.SetFloat("_TimeScale", Map(100 - Sanity, 0f, 100f, 5.5f, 11.25f));
     }
 
     public void AddSanity(float ammount)

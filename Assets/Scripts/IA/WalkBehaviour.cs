@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class WalkBehaviour : StateMachineBehaviour
 {
+    public bool Friendly = true;
     private NavMeshAgent Agent;
     private Transform Player;
     private Vector3[] Waypoints;
@@ -10,7 +11,7 @@ public class WalkBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Agent = animator.GetComponent<NavMeshAgent>();
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Heart.transform;
         GameObject[] wps = GameObject.FindGameObjectsWithTag("Waypoints");
         Waypoints = new Vector3[wps.Length];
         for (int i = 0; i < wps.Length; ++i)
@@ -25,9 +26,16 @@ public class WalkBehaviour : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float distance = Vector3.Distance(animator.transform.position, Player.position);
-        if (distance < 2f)
+        if (distance < 5f)
         {
-            animator.SetBool("Wait", true);
+            if (Friendly)
+            {
+                animator.SetBool("Wait", true);
+            }
+            else
+            {
+                animator.SetBool("Flee", true);
+            }
         }
     }
 

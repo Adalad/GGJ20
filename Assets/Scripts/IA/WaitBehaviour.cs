@@ -10,7 +10,7 @@ public class WaitBehaviour : StateMachineBehaviour
     {
         Agent = animator.GetComponent<NavMeshAgent>();
         Agent.isStopped = true;
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Heart.transform;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

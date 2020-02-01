@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Persistent.unity
     guid: b3a4f084dfa50fb4c91c95cc9cfe1427
   - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 3af50d1f6f0da5342a384b0b874b081b
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 6af5e4f43477ac943a40977700943cb5
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 22f0fad2f9f4c4d42922fb72c650a48e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ac59da61de00012418a4409a5e36d240,
       type: 2}
