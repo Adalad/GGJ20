@@ -103,7 +103,7 @@ public class VRController : MonoBehaviour
     {
         if ((LockedInteractable == null) && other.TryGetComponent<VRInteractableObject>(out LockedInteractable))
         {
-
+            LockedInteractable.OnControllerEnter(this);
         }
     }
 

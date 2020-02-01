@@ -37,6 +37,10 @@ public class GrabbableObject : VRInteractableObject
         }
     }
 
+    public override void OnControllerEnter(VRController controller)
+    {
+    }
+
     public override void OnControllerExit(VRController controller)
     {
         if (controller == Controller)

@@ -6,5 +6,7 @@ public abstract class VRInteractableObject : MonoBehaviour
 
     public abstract void OnGestureChanged(VRController.ControllerGesture gesture, VRController controller);
 
+    public abstract void OnControllerEnter(VRController controller);
+
     public abstract void OnControllerExit(VRController controller);
 }

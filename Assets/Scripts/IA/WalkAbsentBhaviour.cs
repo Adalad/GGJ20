@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class WalkBhaviour : StateMachineBehaviour
+public class WalkAbsentBehaviour : StateMachineBehaviour
 {
     private NavMeshAgent Agent;
     private Transform Player;

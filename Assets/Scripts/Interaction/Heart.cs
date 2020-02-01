@@ -6,7 +6,6 @@ public class Heart : VRInteractableObject
 {
     private Transform DefaultParent;
     private Vector3 DefaultLocalPosition;
-    private Rigidbody RigidBody;
     private VRController Controller;
     private Coroutine Routine;
 
@@ -14,7 +13,6 @@ public class Heart : VRInteractableObject
     {
         DefaultParent = transform.parent;
         DefaultLocalPosition = transform.localPosition;
-        RigidBody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -51,6 +49,18 @@ public class Heart : VRInteractableObject
             transform.parent = null;
             transform.rotation = Quaternion.identity;
             Controller = controller;
+        }
+    }
+
+    public override void OnControllerEnter(VRController controller)
+    {
+        if (Interactable && (controller.CurrentGesture == VRController.ControllerGesture.FIST) && (controller.Velocity.magnitude > 0.3f))
+        {
+            // TODO break animation
+            Debug.Log("QUIT");
+            ClearLink();
+            Interactable = false;
+            Application.Quit();
         }
     }
 

@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a875d3d081b55428961b05d54568ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeartBeat: {fileID: 1531394760}
+  HeartBeat: {fileID: 1169481372}
   LeftHand: {fileID: 1665493685}
   RightHand: {fileID: 1974079061}
   Heart: {fileID: 324027589}
@@ -237,19 +237,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983684351}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1531394752 stripped
+--- !u!1 &1169481371 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4085742175668861627, guid: 850b861a959674543bc50d0e954d1bcd,
+  m_CorrespondingSourceObject: {fileID: 8297145050071676657, guid: 850b861a959674543bc50d0e954d1bcd,
     type: 3}
   m_PrefabInstance: {fileID: 983684351}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1531394760
+--- !u!82 &1169481372
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531394752}
+  m_GameObject: {fileID: 1169481371}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
