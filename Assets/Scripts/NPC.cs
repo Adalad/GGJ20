@@ -6,6 +6,7 @@ public class NPC : MonoBehaviour
     public bool Moon = false;
     public AnimationCurve Curve;
     public Animator MeshAnimator;
+    public GameObject Shield;
     private Animator AgentAnimator;
     private PlayerController Player;
     private Vector3 LastPos;

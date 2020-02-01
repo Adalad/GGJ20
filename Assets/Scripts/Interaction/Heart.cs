@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Heart : VRInteractableObject
 {
+    public GameObject FullHeart;
+    public GameObject FracturedHeart;
+    public float ExplodeStrength = 1f;
     private Transform DefaultParent;
     private Vector3 DefaultLocalPosition;
     private VRController Controller;
@@ -56,11 +59,15 @@ public class Heart : VRInteractableObject
     {
         if (Interactable && (controller.CurrentGesture == VRController.ControllerGesture.FIST) && (controller.Velocity.magnitude > 0.3f))
         {
-            // TODO break animation
-            Debug.Log("QUIT");
             ClearLink();
             Interactable = false;
-            Application.Quit();
+            FullHeart.SetActive(false);
+            FracturedHeart.SetActive(true);
+            foreach (Rigidbody child in FracturedHeart.transform.GetComponentsInChildren<Rigidbody>())
+            {
+                child.AddForce((child.transform.position - transform.position).normalized * ExplodeStrength);
+            }
+            StartCoroutine(QuitRoutine());
         }
     }
 
@@ -94,5 +101,11 @@ public class Heart : VRInteractableObject
         transform.parent = DefaultParent;
         transform.localPosition = DefaultLocalPosition;
         transform.localRotation = Quaternion.identity;
+    }
+
+    private IEnumerator QuitRoutine()
+    {
+        yield return new WaitForSeconds(2);
+        Application.Quit();
     }
 }
