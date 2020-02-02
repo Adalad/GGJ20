@@ -79,7 +79,10 @@ public class VRLocomotionManager : MonoBehaviour
         {
             LocomotionComponent.GetMovement(ref MoveHorizontal, ref MoveVertical, ref Rotation);
             MoveDirection = (Head.forward * MoveVertical + Head.right * MoveHorizontal) * MoveSpeed * Time.deltaTime;
-            MoveDirection.y = 0;
+            if (!Character.isGrounded)
+            {
+                MoveDirection.y = Physics.gravity.y * Time.deltaTime;
+            }
 
             Character.Move(MoveDirection);
             transform.RotateAround(Head.transform.position, Vector3.up, Rotation * RotateSpeed * Time.deltaTime);
